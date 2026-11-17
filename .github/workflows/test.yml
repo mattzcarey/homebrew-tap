@@ -11,8 +11,8 @@ jobs:
         os: [macos-latest, macos-15-intel, ubuntu-latest, ubuntu-24.04-arm]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: Homebrew/actions/setup-homebrew@master
-      - run: brew install --formula ./Formula/everystate.rb
-        working-directory: ${{ github.workspace }}
-      - run: brew test everystate
-      - run: brew audit --strict everystate
+      # Checks this repository out as the tap mattzcarey/tap.
+      - uses: Homebrew/actions/setup-homebrew@main
+      - run: brew install mattzcarey/tap/everystate
+      - run: brew test mattzcarey/tap/everystate
+      - run: brew audit --strict mattzcarey/tap/everystate
