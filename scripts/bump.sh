@@ -1,17 +1,17 @@
 #!/bin/sh
 # Points a formula at the latest GitHub release of its project.
 # Usage: scripts/bump.sh <formula> <owner/repo>      e.g. scripts/bump.sh everystate mattzcarey/everystate
-# Rewrites the version, and the sha256 after each release URL. Does nothing when the formula is current.
+# Rewrites the version in each release URL, and the sha256 after it. Does nothing when the formula is current.
 set -eu
 formula="Formula/$1.rb"
 repo="$2"
 tag=$(gh api "repos/$repo/releases/latest" -q .tag_name)
 new=${tag#v}
-old=$(sed -n 's/^  version "\(.*\)"$/\1/p' "$formula")
+old=$(sed -n 's|.*/releases/download/v\([^/]*\)/.*|\1|p' "$formula" | head -1)
 if [ "$old" = "$new" ]; then echo "$1 is already at $new"; exit 0; fi
 
 tmp=$(mktemp)
-sed "s|^  version \"$old\"|  version \"$new\"|; s|/releases/download/v$old/|/releases/download/v$new/|" "$formula" > "$tmp"
+sed "s|/releases/download/v$old/|/releases/download/v$new/|" "$formula" > "$tmp"
 for url in $(sed -n 's/^ *url "\(.*\)"$/\1/p' "$tmp"); do
   sum=$(curl -fsSL "$url" | shasum -a 256 | cut -d' ' -f1)
   # The sha256 line follows its url line.

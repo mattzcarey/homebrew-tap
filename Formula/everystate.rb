@@ -1,7 +1,6 @@
 class Everystate < Formula
   desc "TLA+ model checker with a TLC-compatible command-line"
   homepage "https://github.com/mattzcarey/everystate"
-  version "0.3.1"
   license "MIT"
 
   on_macos do
