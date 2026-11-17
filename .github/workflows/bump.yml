@@ -1,0 +1,23 @@
+# Updates each formula to the latest release of its project, every hour and from the Actions tab.
+name: Bump
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: scripts/bump.sh everystate mattzcarey/everystate
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Commit
+        run: |
+          if git diff --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "everystate $(sed -n 's/^  version "\(.*\)"$/\1/p' Formula/everystate.rb)"
+          git push
