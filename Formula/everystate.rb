@@ -1,28 +1,28 @@
 class Everystate < Formula
   desc "TLA+ model checker with a TLC-compatible command-line"
   homepage "https://github.com/mattzcarey/everystate"
-  version "0.4.0"
+  version "0.4.1"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/mattzcarey/everystate/releases/download/v0.4.0/everystate-darwin-arm64.tar.gz"
-      sha256 "0955ac1ce60e9643ad1f8bb78a5d385dedd83e321ddc23a386d99b4401e03272"
+      url "https://github.com/mattzcarey/everystate/releases/download/v0.4.1/everystate-darwin-arm64.tar.gz"
+      sha256 "05936480d491bc3f9d0a5f058d0625950c70b8bb24021721b3ac6c8beb130221"
     end
     on_intel do
-      url "https://github.com/mattzcarey/everystate/releases/download/v0.4.0/everystate-darwin-x64.tar.gz"
-      sha256 "cdb002657ee4303d820c2f39520eb30bea3521ab79d839212afb211790a06e19"
+      url "https://github.com/mattzcarey/everystate/releases/download/v0.4.1/everystate-darwin-x64.tar.gz"
+      sha256 "13b46ae67d4ecf613bfec4b42436afa4af340447a686a5f6d8599c2623f42774"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/mattzcarey/everystate/releases/download/v0.4.0/everystate-linux-arm64.tar.gz"
-      sha256 "477cf1aa6c2ae97debce656a5c93daead163b5b14438c33a256703349ede55f2"
+      url "https://github.com/mattzcarey/everystate/releases/download/v0.4.1/everystate-linux-arm64.tar.gz"
+      sha256 "18b1802546d2816156f6100c4582e4154bd34e6cf5499045a665f29c6de1f86b"
     end
     on_intel do
-      url "https://github.com/mattzcarey/everystate/releases/download/v0.4.0/everystate-linux-x64.tar.gz"
-      sha256 "0d34fa2039037b4124907c594acddba6ec684199b428b52aeaa9c9e5603be3f4"
+      url "https://github.com/mattzcarey/everystate/releases/download/v0.4.1/everystate-linux-x64.tar.gz"
+      sha256 "347c5381c3eb1cb62b788ffa90c562ccd9a6b1df3f3f40e725db6c7b80bd5d68"
     end
   end
 
